@@ -125,24 +125,6 @@ behavior:"smooth"
 
 };
 
-
-
-// ===============================
-// Smooth Scroll Navigation
-// ===============================
-
-document.querySelectorAll('nav a').forEach(anchor=>{
-
-anchor.addEventListener("click",function(e){
-
-e.preventDefault();
-
-});
-
-});
-
-
-
 // ===============================
 // Product Hover Animation
 // ===============================
