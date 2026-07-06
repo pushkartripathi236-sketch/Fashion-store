@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Profile | TRIPATHI'S</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+
+<a href="../index.html" style="text-decoration:none;color:#111;">
+TRIPATHI'S
+</a>
+
+</div>
+
+<nav>
+
+<ul>
+
+<li><a href="../index.html">Home</a></li>
+
+<li><a href="cart.html">Cart</a></li>
+
+<li><a href="profile.html">Profile</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="profile">
+
+<div class="profile-card">
+
+<img src="https://randomuser.me/api/portraits/men/32.jpg">
+
+<h2 id="userName">Guest User</h2>
+
+<p id="userEmail">guest@email.com</p>
+
+<button id="logoutBtn">
+
+Logout
+
+</button>
+
+</div>
+
+</section>
+
+<script>
+
+const user=JSON.parse(localStorage.getItem("tripathiUser"));
+
+if(user){
+
+document.getElementById("userName").innerText=user.name;
+
+document.getElementById("userEmail").innerText=user.email;
+
+}
+
+document.getElementById("logoutBtn").addEventListener("click",()=>{
+
+localStorage.removeItem("tripathiUser");
+
+alert("Logged Out Successfully");
+
+window.location.href="login.html";
+
+});
+
+</script>
+
+</body>
+
+</html>

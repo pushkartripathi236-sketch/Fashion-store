@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | TRIPATHI'S</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header>
+
+        <div class="logo">
+            <a href="../index.html" style="text-decoration:none;color:#111;">
+                TRIPATHI'S
+            </a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="men.html">Men</a></li>
+                <li><a href="women.html">Women</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-icons">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+
+    </header>
+
+    <!-- Cart -->
+
+    <section class="cart-page">
+
+        <h1>Your Shopping Cart</h1>
+
+        <table class="cart-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Product</th>
+
+                    <th>Price</th>
+
+                    <th>Quantity</th>
+
+                    <th>Total</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="cartItems">
+
+                <!-- Products Here -->
+
+            </tbody>
+
+        </table>
+
+        <div class="cart-summary">
+
+            <h2>Total : ₹ <span id="grandTotal">0</span></h2>
+
+            <a href="checkout.html">
+
+<button class="checkout-btn">
+
+Proceed To Checkout
+
+</button>
+
+</a>
+
+        </div>
+
+    </section>
+
+    <script src="../script.js"></script>
+<script>
+
+let cart = JSON.parse(localStorage.getItem("tripathiCart")) || [];
+
+const cartItems = document.getElementById("cartItems");
+
+const grandTotal = document.getElementById("grandTotal");
+
+function loadCart(){
+
+cartItems.innerHTML="";
+
+let total=0;
+
+cart.forEach((item,index)=>{
+
+total += item.price * item.quantity;
+
+cartItems.innerHTML += `
+
+<tr>
+
+<td>
+
+<img src="${item.image}" width="80">
+
+<br>
+
+${item.name}
+
+</td>
+
+<td>₹${item.price}</td>
+
+<td>${item.quantity}</td>
+
+<td>₹${item.price*item.quantity}</td>
+
+<td>
+
+<button onclick="removeItem(${index})">
+
+Remove
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+grandTotal.innerText=total;
+
+}
+
+function removeItem(index){
+
+cart.splice(index,1);
+
+localStorage.setItem("tripathiCart",JSON.stringify(cart));
+
+loadCart();
+
+}
+
+loadCart();
+
+</script>
+
+</body>
+
+</html>
