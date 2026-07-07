@@ -197,19 +197,19 @@ showToast("Light Mode Enabled");
 // Search
 // ===============================
 
-const search=document.querySelector(".fa-magnifying-glass");
+const search = document.querySelector(".fa-magnifying-glass");
 
-search.addEventListener("click",()=>{
+if (search) {
+    search.addEventListener("click", () => {
 
-let value=prompt("Search Product");
+        let value = prompt("Search Product");
 
-if(value){
+        if (value) {
+            showToast("Searching : " + value);
+        }
 
-showToast("Searching : "+value);
-
+    });
 }
-
-});
 
 
 // ===============================
@@ -287,21 +287,16 @@ showToast("🎉 Flat 50% OFF Today Only");
 
 window.addEventListener("scroll",()=>{
 
-const navbar=document.querySelector("header");
+const navbar = document.querySelector("header");
 
-if(window.scrollY>50){
-
-navbar.style.background="#ffffff";
-
-navbar.style.boxShadow="0 5px 15px rgba(0,0,0,.15)";
-
-}else{
-
-navbar.style.background="#ffffff";
-
+if (navbar) {
+    if (window.scrollY > 50) {
+        navbar.style.background = "#ffffff";
+        navbar.style.boxShadow = "0 5px 15px rgba(0,0,0,.15)";
+    } else {
+        navbar.style.background = "#ffffff";
+    }
 }
-
-});
 
 
 // ===============================
@@ -717,9 +712,11 @@ slider.addEventListener("mouseleave",startSlider);
 
 // Start
 
-showSlide(currentSlide);
-
-startSlider();
+if (slides.length > 0) {
+    showSlide(currentSlide);
+    startSlider();
+}
+    
 //==========================
 // FLASH SALE COUNTDOWN
 //==========================
