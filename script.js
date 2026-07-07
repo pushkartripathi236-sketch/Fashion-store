@@ -534,31 +534,40 @@ document.querySelectorAll(".product-card").forEach(card=>{
 
 card.addEventListener("click",()=>{
 
-modal.style.display="flex";
+const modal = document.getElementById("productModal");
+const modalImage = document.getElementById("modalImage");
+const modalTitle = document.getElementById("modalTitle");
+const modalPrice = document.getElementById("modalPrice");
 
-modalImage.src=card.querySelector("img").src;
+if (modal && modalImage && modalTitle && modalPrice) {
 
-modalTitle.innerText=card.querySelector("h3").innerText;
+    document.querySelectorAll(".product-card").forEach(card => {
 
-modalPrice.innerText=card.querySelector(".price").innerText;
+        card.addEventListener("click", () => {
 
-});
+            modal.style.display = "flex";
 
-});
+            modalImage.src = card.querySelector("img").src;
+            modalTitle.innerText = card.querySelector("h3").innerText;
+            modalPrice.innerText = card.querySelector(".price").innerText;
 
-document.querySelector(".close-modal").onclick=()=>{
+        });
 
-modal.style.display="none";
+    });
 
-}
+    const closeModal = document.querySelector(".close-modal");
 
-window.onclick=(e)=>{
+    if (closeModal) {
+        closeModal.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+    }
 
-if(e.target==modal){
-
-modal.style.display="none";
-
-}
+    window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    });
 
 }
 // ===============================
@@ -733,17 +742,14 @@ const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
 
 const seconds = Math.floor((distance%(1000*60))/1000);
 
-document.getElementById("days").innerHTML =
-String(days).padStart(2,"0");
+const days = document.getElementById("days");
+const hours = document.getElementById("hours");
+const minutes = document.getElementById("minutes");
+const seconds = document.getElementById("seconds");
 
-document.getElementById("hours").innerHTML =
-String(hours).padStart(2,"0");
-
-document.getElementById("minutes").innerHTML =
-String(minutes).padStart(2,"0");
-
-document.getElementById("seconds").innerHTML =
-String(seconds).padStart(2,"0");
+if (days && hours && minutes && seconds) {
+    // countdown code
+}
 
 if(distance<0){
 
