@@ -124,6 +124,7 @@ behavior:"smooth"
 });
 
 };
+ 
 
 // ===============================
 // Product Hover Animation
@@ -200,6 +201,7 @@ showToast("Light Mode Enabled");
 const search = document.querySelector(".fa-magnifying-glass");
 
 if (search) {
+
     search.addEventListener("click", () => {
 
         let value = prompt("Search Product");
@@ -209,6 +211,7 @@ if (search) {
         }
 
     });
+
 }
 
 
@@ -277,27 +280,32 @@ item.classList.add("active");
 setTimeout(()=>{
 
 showToast("🎉 Flat 50% OFF Today Only");
-
 },3000);
-
 
 // ===============================
 // Auto Scroll Animation
 // ===============================
 
-window.addEventListener("scroll",()=>{
+window.addEventListener("scroll", () => {
 
-const navbar = document.querySelector("header");
+    const navbar = document.querySelector("header");
 
-if (navbar) {
+    if (!navbar) return;
+
     if (window.scrollY > 50) {
+
         navbar.style.background = "#ffffff";
         navbar.style.boxShadow = "0 5px 15px rgba(0,0,0,.15)";
-    } else {
-        navbar.style.background = "#ffffff";
-    }
-}
 
+    }
+    else {
+
+        navbar.style.background = "#ffffff";
+        navbar.style.boxShadow = "none";
+
+    }
+
+});
 
 // ===============================
 // Newsletter
@@ -513,21 +521,10 @@ product.style.display="none";
 });
 
 }
+
 // ===============================
 // PRODUCT MODAL
 // ===============================
-
-const modal=document.getElementById("productModal");
-
-const modalImage=document.getElementById("modalImage");
-
-const modalTitle=document.getElementById("modalTitle");
-
-const modalPrice=document.getElementById("modalPrice");
-
-document.querySelectorAll(".product-card").forEach(card=>{
-
-card.addEventListener("click",()=>{
 
 const modal = document.getElementById("productModal");
 const modalImage = document.getElementById("modalImage");
@@ -565,6 +562,7 @@ if (modal && modalImage && modalTitle && modalPrice) {
     });
 
 }
+
 // ===============================
 // HERO SLIDER
 // ===============================
@@ -712,11 +710,9 @@ slider.addEventListener("mouseleave",startSlider);
 
 // Start
 
-if (slides.length > 0) {
-    showSlide(currentSlide);
-    startSlider();
-}
-    
+showSlide(currentSlide);
+
+startSlider();
 //==========================
 // FLASH SALE COUNTDOWN
 //==========================
@@ -739,14 +735,17 @@ const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
 
 const seconds = Math.floor((distance%(1000*60))/1000);
 
-const days = document.getElementById("days");
-const hours = document.getElementById("hours");
-const minutes = document.getElementById("minutes");
-const seconds = document.getElementById("seconds");
+document.getElementById("days").innerHTML =
+String(days).padStart(2,"0");
 
-if (days && hours && minutes && seconds) {
-    // countdown code
-}
+document.getElementById("hours").innerHTML =
+String(hours).padStart(2,"0");
+
+document.getElementById("minutes").innerHTML =
+String(minutes).padStart(2,"0");
+
+document.getElementById("seconds").innerHTML =
+String(seconds).padStart(2,"0");
 
 if(distance<0){
 
